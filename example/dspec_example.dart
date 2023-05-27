@@ -1,6 +1,6 @@
 import "package:dspec/dspec.dart";
 
 void main() {
-    var awesome = Awesome();
+    var awesome = Spec();
     print("awesome: ${awesome.isAwesome}");
 }
