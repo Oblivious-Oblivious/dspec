@@ -1,6 +1,7 @@
 name: dspec
 description: BDD in Dart, inspired from Rspec, fork of cSpec
 version: 0.1.0
+repository: https://github.com/Oblivious-Oblivious/dspec
 
 environment:
   sdk: ^3.0.2
