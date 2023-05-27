@@ -7,7 +7,7 @@ VERSION =
 
 WARNINGS =
 
-INPUT = example/dspec_example.dart
+INPUT = examples/simple/testrunner.dart
 
 all: compiler
 
