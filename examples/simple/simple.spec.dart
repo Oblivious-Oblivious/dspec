@@ -170,7 +170,5 @@ class second extends SpecModule {
                 assert_that(bbb).equals_to(ccc);
             });
         });
-
-        internalstuff();
     }
 }
