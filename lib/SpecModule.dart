@@ -30,7 +30,7 @@ class SpecModule {
     describe(String name, desc) {
         this.spacing += "    ";
 
-        print(this.spacing + "`${name}`".magenta());
+        print(this.spacing + "`${name}`".magenta);
         desc();
 
         this.spacing = this.spacing.substring(0, this.spacing.length - 4);
@@ -53,10 +53,10 @@ class SpecModule {
             this.module_data.positive_it_counter++;
 
             if(this.type == "all" || this.type == "passing")
-                print("${this.spacing}${"✓".green()} it $name");
+                print("${this.spacing}${"✓".green} it $name");
         }
         else if(this.type == "all" || this.type == "failing") {
-            print("${this.spacing}${"✗".red()} it $name");
+            print("${this.spacing}${"✗".red} it $name");
             print(this.failed_it_result);
         }
 
@@ -71,7 +71,7 @@ class SpecModule {
         this.module_data.xit_counter++;
 
         if(this.type == "all" || this.type == "skipped")
-            print("${this.spacing}- xit ${name} (skipped)".gray());
+            print("${this.spacing}- xit ${name} (skipped)".gray);
 
         this.after_each_block();
         this.spacing = this.spacing.substring(0, this.spacing.length - 4);
@@ -89,35 +89,35 @@ class SpecModule {
     }
 
     iss(expected) => generic_match(equals(this.actual, expected), () {
-        return "${"`${this.actual}`".red()} should be `${expected}`";
+        return "${"`${this.actual}`".red} should be `${expected}`";
     });
 
     isnot(expected) => generic_match(not_equals(this.actual, expected), () {
-        return "${"`${this.actual}`".red()} should not be `${expected}`";
+        return "${"`${this.actual}`".red} should not be `${expected}`";
     });
 
     equals_to(expected) => generic_match(equals(this.actual, expected), () {
-        return "`${expected}` expected but got ${"`${this.actual}`".red()}";
+        return "`${expected}` expected but got ${"`${this.actual}`".red}";
     });
 
     does_not_equal_to(expected) => generic_match(not_equals(this.actual, expected), () {
-        return "`${expected}` must be different from ${"`${this.actual}`".red()}";
+        return "`${expected}` must be different from ${"`${this.actual}`".red}";
     });
 
     is_true() => generic_match(this.actual == true, () {
-        return "${"`${this.actual}`".red()} should be true";
+        return "${"`${this.actual}`".red} should be true";
     });
 
     is_false() => generic_match(this.actual == false, () {
-        return "${"`${this.actual}`".red()} should be false";
+        return "${"`${this.actual}`".red} should be false";
     });
 
     is_null() => generic_match(this.actual == null, () {
-        return "${"`${this.actual}`".red()} should be null";
+        return "${"`${this.actual}`".red} should be null";
     });
 
     isnot_null() => generic_match(this.actual!= null, () {
-        return "${"`${this.actual}`".red()} should not be null";
+        return "${"`${this.actual}`".red} should not be null";
     });
 
     SpecModule assert_that(actual) {
@@ -130,14 +130,14 @@ class SpecModule {
         this.spacing += "    ";
         this.failed_it_result += "${this.spacing}${StackTrace.current.file}:${StackTrace.current.line}:\n";
         this.spacing += "    ";
-        this.failed_it_result += "${this.spacing}|> ${message.red()}\n";
+        this.failed_it_result += "${this.spacing}|> ${message.red}\n";
         this.spacing = this.spacing.substring(0, this.spacing.length - 8);
     }
 
     SpecData run(String type) {
         this.type = type;
 
-        print("Module `${this.runtimeType.toString()}`".module_color());
+        print("Module `${this.runtimeType.toString()}`".module_color);
         spec_code();
         print("");
 

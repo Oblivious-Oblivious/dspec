@@ -7,20 +7,20 @@ class SpecData {
     var time_taken = <int>[];
 
     display() {
-        print("● ${it_counter + xit_counter} tests".yellow());
-        print("✓ ${positive_it_counter} passing".green());
-        print("✗ ${it_counter - positive_it_counter} failing".red());
-        print("- ${xit_counter} skipped".gray());
+        print("● ${it_counter + xit_counter} tests".yellow);
+        print("✓ ${positive_it_counter} passing".green);
+        print("✗ ${it_counter - positive_it_counter} failing".red);
+        print("- ${xit_counter} skipped".gray);
 
         double formatted_time = this.time_taken.fold(0, (acc, next) => acc + next);
         if(formatted_time > 60000000)
-            print("★ Finished in ${(formatted_time/60000000).toStringAsFixed(5)} minutes".cyan());
+            print("★ Finished in ${(formatted_time/60000000).toStringAsFixed(5)} minutes".cyan);
         else if(formatted_time > 1000000)
-            print("★ Finished in ${(formatted_time/1000000).toStringAsFixed(5)} seconds".cyan());
+            print("★ Finished in ${(formatted_time/1000000).toStringAsFixed(5)} seconds".cyan);
         else if(formatted_time > 1000)
-            print("★ Finished in ${(formatted_time/1000).toStringAsFixed(5)} ms".cyan());
+            print("★ Finished in ${(formatted_time/1000).toStringAsFixed(5)} ms".cyan);
         else
-            print("★ Finished in ${formatted_time.toStringAsFixed(5)} μs".cyan());
+            print("★ Finished in ${formatted_time.toStringAsFixed(5)} μs".cyan);
     }
 
     add(SpecData data) {
