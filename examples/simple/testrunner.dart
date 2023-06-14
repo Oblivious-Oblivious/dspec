@@ -6,6 +6,7 @@ main() {
     var s = Spec([
         cDataLib(),
         second(),
+        third(),
     ]);
     s.run_spec_suite(type: "all");
 }

@@ -18,8 +18,8 @@ class SpecModule {
 
     spec_code() {}
 
-    equals(Object? actual, Object? expected) => actual.equals(expected);
-    not_equals(actual, expected) => !equals(actual, expected);
+    _equals(Object? actual, Object? expected) => actual.dspec_if_same(expected);
+    _not_equals(actual, expected) => !_equals(actual, expected);
 
     before(block) => block();
     before_each(block) => this.before_each_block = block;
@@ -88,19 +88,19 @@ class SpecModule {
         }
     }
 
-    iss(expected) => generic_match(equals(this.actual, expected), () {
+    iss(expected) => generic_match(_equals(this.actual, expected), () {
         return "${"`${this.actual}`".red} should be `${expected}`";
     });
 
-    isnot(expected) => generic_match(not_equals(this.actual, expected), () {
+    isnot(expected) => generic_match(_not_equals(this.actual, expected), () {
         return "${"`${this.actual}`".red} should not be `${expected}`";
     });
 
-    equals_to(expected) => generic_match(equals(this.actual, expected), () {
+    equals_to(expected) => generic_match(_equals(this.actual, expected), () {
         return "`${expected}` expected but got ${"`${this.actual}`".red}";
     });
 
-    does_not_equal_to(expected) => generic_match(not_equals(this.actual, expected), () {
+    does_not_equal_to(expected) => generic_match(_not_equals(this.actual, expected), () {
         return "`${expected}` must be different from ${"`${this.actual}`".red}";
     });
 
