@@ -1,85 +1,60 @@
-extension DeprecatedEquality on Deprecated {
+import "package:collection/collection.dart";
+
+extension DspecDeprecatedEquality on Deprecated {
     bool dspec_if_same(other) => this.message == other.message;
 }
 
-extension ExpandoEquality on Expando {
+extension DspecExpandoEquality on Expando {
     bool dspec_if_same(other) => this.name == other.name;
 }
 
-extension FunctionEquality on Function {
+extension DspecFunctionEquality on Function {
     bool dspec_if_same(other) => this.toString() == other.toString();
 }
 
-extension ListEquality on List {
-    bool dspec_if_same(other) {
-        if(this.length != other.length)
-            return false;
-
-        for(int i = 0; i < this.length; i++)
-            if(this[i] != other[i])
-                return false;
-        return true;
-    }
+extension DspecListEquality on List {
+    bool dspec_if_same(other) => DeepCollectionEquality().equals(this, other);
 }
 
-extension MapEquality on Map {
-    bool dspec_if_same(other) {
-        if(this.length != other.length)
-            return false;
-
-        var thiskeys = this.keys.toList();
-        var thisvalues = this.values.toList();
-        var otherkeys = other.keys.toList();
-        var othervalues = other.values.toList();
-
-        for(int i = 0; i < this.length; i++)
-            if(thiskeys[i]!= otherkeys[i]
-            || thisvalues[i]!= othervalues[i])
-                return false;
-        return true;
-    }
+extension DspecMapEquality on Map {
+    bool dspec_if_same(other) => DeepCollectionEquality().equals(this, other);
 }
 
-extension MapEntryEquality on MapEntry {
+extension DspecMapEntryEquality on MapEntry {
     bool dspec_if_same(other) =>
         this.key == other.key
         && this.value == other.value;
 }
 
-extension PragmaEquality on pragma {
+extension DspecPragmaEquality on pragma {
     bool dspec_if_same(other) => this.name == other.name;
 }
 
-extension RuneIteratorEquality on RuneIterator {
+extension DspecRuneIteratorEquality on RuneIterator {
     bool dspec_if_same(other) => this.string == other.string;
 }
 
-extension RunesEquality on Runes {
+extension DspecRunesEquality on Runes {
     bool dspec_if_same(other) => this.string == other.string;
 }
 
-extension SetEquality on Set {
-    bool dspec_if_same(other) {
-        if(this.length != other.length)
-            return false;
-        else
-            return this.containsAll(other);
-    }
+extension DspecSetEquality on Set {
+    bool dspec_if_same(other) => DeepCollectionEquality().equals(this, other);
 }
 
-extension StackTraceEquality on StackTrace {
+extension DspecStackTraceEquality on StackTrace {
     bool dspec_if_same(other) => this.toString() == other.toString();
 }
 
-extension StringBufferEquality on StringBuffer {
+extension DspecStringBufferEquality on StringBuffer {
     bool dspec_if_same(other) => this.toString() == other.toString();
 }
 
-extension UriDataEquality on UriData {
+extension DspecUriDataEquality on UriData {
     bool dspec_if_same(other) => this.contentText == other.contentText;
 }
 
-extension ObjectEquality on Object? {
+extension DspecObjectEquality on Object? {
     bool dspec_if_same(other) {
         if(this is Deprecated && other is Deprecated)
             return (this as Deprecated).dspec_if_same(other);

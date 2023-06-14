@@ -310,7 +310,17 @@ class third extends SpecModule {
             });
         });
 
-        // describe("Nested List specs", () {
+        describe("Nested List specs", () {
+            it("succeeds", () {
+                assert_that([[1, 2], 3, [4, [5, 6], 7], 8]).iss([[1, 2], 3, [4, [5, 6], 7], 8]);
+                assert_that([[1, 2], 3, [4, [5, 6], 7], 8]).equals_to([[1, 2], 3, [4, [5, 6], 7], 8]);
+            });
+            it("fails", () {
+                assert_that([[1, 2], 3, [4, [5, 6], 7], 8]).isnot([1,2]);
+                assert_that([[1, 2], 3, [4, [5, 6], 7], 8]).does_not_equal_to([1,2]);
+            });
+        });
+
         describe("Map specs", () {
             it("succeeds", () {
                 assert_that({"v1": 1, "v2": 2}).iss({"v1": 1, "v2": 2});
@@ -322,7 +332,17 @@ class third extends SpecModule {
             });
         });
 
-        // describe("Nested Map specs", () {
+        describe("Nested Map specs", () {
+            it("succeeds", () {
+                assert_that({"v1": {}, "v2": {}}).iss({"v1": {}, "v2": {}});
+                assert_that({"v1": {}, "v2": {}}).equals_to({"v1": {}, "v2": {}});
+            });
+            it("fails", () {
+                assert_that({"v1": {}, "v2": {}}).isnot({"v1": 1, "v2": 2});
+                assert_that({"v1": {}, "v2": {}}).does_not_equal_to({"v1": 1, "v2": 2});
+            });
+        });
+
         describe("MapEntry specs", () {
             it("succeeds", () {
                 assert_that(MapEntry("v", 42)).iss(MapEntry("v", 42));
@@ -413,7 +433,17 @@ class third extends SpecModule {
             });
         });
 
-        // describe("Nested Set specs", () {
+        describe("Nested Set specs", () {
+            it("succeeds", () {
+                assert_that(<dynamic>{1, {2, {}}, 3, {"4", {"5", "6"}, "7"}, "8"}).iss(<dynamic>{1, {2, {}}, 3, {"4", {"5", "6"}, "7"}, "8"});
+                assert_that(<dynamic>{1, {2, {}}, 3, {"4", {"5", "6"}, "7"}, "8"}).equals_to(<dynamic>{1, {2, {}}, 3, {"4", {"5", "6"}, "7"}, "8"});
+            });
+            it("fails", () {
+                assert_that(<dynamic>{1, {2, {}}, 3, {"4", {"5", "6"}, "7"}, "8"}).isnot(<dynamic>{});
+                assert_that(<dynamic>{1, {2, {}}, 3, {"4", {"5", "6"}, "7"}, "8"}).does_not_equal_to(<dynamic>{});
+            });
+        });
+
         describe("StackTrace specs", () {
             it("succeeds", () {
                 assert_that(StackTrace.fromString("function")).iss(StackTrace.fromString("function"));
