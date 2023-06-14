@@ -287,7 +287,6 @@ class third extends SpecModule {
             });
         });
 
-        // describe("Future specs", () {
         describe("int specs", () {
             it("succeeds", () {
                 assert_that(42).iss(42);
@@ -455,7 +454,6 @@ class third extends SpecModule {
             });
         });
 
-        // describe("Stream specs", () {
         describe("String specs", () {
             it("succeeds", () {
                 assert_that("teststr").iss("teststr");

@@ -54,6 +54,8 @@ extension DspecUriDataEquality on UriData {
     bool dspec_if_same(other) => this.contentText == other.contentText;
 }
 
+// TODO Test Futures and Streams
+
 extension DspecObjectEquality on Object? {
     bool dspec_if_same(other) {
         if(this is Deprecated && other is Deprecated)
