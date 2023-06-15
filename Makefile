@@ -7,7 +7,7 @@ VERSION =
 
 WARNINGS =
 
-INPUT = examples/simple/testrunner.dart
+INPUT = example/simple/testrunner.dart
 
 all: compiler
 
@@ -15,10 +15,10 @@ compiler:
 	$(CC) $(OPT) $(VERSION) $(WARNINGS) $(INPUT)
 
 prime:
-	$(CC) $(OPT) $(VERSION) $(WARNINGS) examples/prime_factors/testrunner.dart
+	$(CC) $(OPT) $(VERSION) $(WARNINGS) example/prime_factors/testrunner.dart
 
 stack:
-	$(CC) $(OPT) $(VERSION) $(WARNINGS) examples/stack/testrunner.dart
+	$(CC) $(OPT) $(VERSION) $(WARNINGS) example/stack/testrunner.dart
 
 clean:
 	@echo
