@@ -6,7 +6,7 @@ class SpecData {
     int positive_it_counter = 0;
     var time_taken = <int>[];
 
-    display() {
+    void display() {
         print("● ${it_counter + xit_counter} tests".yellow);
         print("✓ ${positive_it_counter} passing".green);
         print("✗ ${it_counter - positive_it_counter} failing".red);
@@ -23,7 +23,7 @@ class SpecData {
             print("★ Finished in ${formatted_time.toStringAsFixed(5)} μs".cyan);
     }
 
-    add(SpecData data) {
+    void add(SpecData data) {
         this.it_counter += data.it_counter;
         this.xit_counter += data.xit_counter;
         this.positive_it_counter += data.positive_it_counter;

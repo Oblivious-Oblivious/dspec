@@ -16,18 +16,18 @@ class SpecModule {
     var after_each_block = () {};
     Object? actual;
 
-    spec_code() {}
+    void spec_code() {}
 
-    _equals(Object? actual, Object? expected) => actual.dspec_if_same(expected);
-    _not_equals(actual, expected) => !_equals(actual, expected);
+    bool _equals(Object? actual, Object? expected) => actual.dspec_if_same(expected);
+    bool _not_equals(actual, expected) => !_equals(actual, expected);
 
-    before(block) => block();
-    before_each(block) => this.before_each_block = block;
+    void before(block) => block();
+    void before_each(block) => this.before_each_block = block;
 
-    after(block) => block();
-    after_each(block) => this.after_each_block = block;
+    void after(block) => block();
+    void after_each(block) => this.after_each_block = block;
 
-    describe(String name, desc) {
+    void describe(String name, desc) {
         this.spacing += "    ";
 
         print(this.spacing + "`${name}`".magenta);
@@ -36,7 +36,7 @@ class SpecModule {
         this.spacing = this.spacing.substring(0, this.spacing.length - 4);
     }
 
-    it(String name, it) {
+    void it(String name, it) {
         this.spacing += "    ";
         this.before_each_block();
 
@@ -64,7 +64,7 @@ class SpecModule {
         this.spacing = this.spacing.substring(0, this.spacing.length - 4);
     }
 
-    xit(String name, _) {
+    void xit(String name, _) {
         this.spacing += "    ";
         this.before_each_block();
 
@@ -77,7 +77,7 @@ class SpecModule {
         this.spacing = this.spacing.substring(0, this.spacing.length - 4);
     }
 
-    generic_match(bool matched, error_message) {
+    void generic_match(bool matched, error_message) {
         if(!matched) {
             this.it_state = false;
             this.spacing += "    ";
@@ -88,44 +88,44 @@ class SpecModule {
         }
     }
 
-    iss(expected) => generic_match(_equals(this.actual, expected), () {
-        return "${"`${this.actual}`".red} should be `${expected}`";
-    });
+    void iss(expected) =>
+        generic_match(_equals(this.actual, expected), () =>
+            "${"`${this.actual}`".red} should be `${expected}`");
 
-    isnot(expected) => generic_match(_not_equals(this.actual, expected), () {
-        return "${"`${this.actual}`".red} should not be `${expected}`";
-    });
+    void isnot(expected) =>
+        generic_match(_not_equals(this.actual, expected), () =>
+            "${"`${this.actual}`".red} should not be `${expected}`");
 
-    equals_to(expected) => generic_match(_equals(this.actual, expected), () {
-        return "`${expected}` expected but got ${"`${this.actual}`".red}";
-    });
+    void equals_to(expected) =>
+        generic_match(_equals(this.actual, expected), () =>
+            "`${expected}` expected but got ${"`${this.actual}`".red}");
 
-    does_not_equal_to(expected) => generic_match(_not_equals(this.actual, expected), () {
-        return "`${expected}` must be different from ${"`${this.actual}`".red}";
-    });
+    void does_not_equal_to(expected) =>
+        generic_match(_not_equals(this.actual, expected), () =>
+            "`${expected}` must be different from ${"`${this.actual}`".red}");
 
-    is_true() => generic_match(this.actual == true, () {
-        return "${"`${this.actual}`".red} should be true";
-    });
+    void is_true() =>
+        generic_match(this.actual == true, () =>
+            "${"`${this.actual}`".red} should be true");
 
-    is_false() => generic_match(this.actual == false, () {
-        return "${"`${this.actual}`".red} should be false";
-    });
+    void is_false() =>
+        generic_match(this.actual == false, () =>
+            "${"`${this.actual}`".red} should be false");
 
-    is_null() => generic_match(this.actual == null, () {
-        return "${"`${this.actual}`".red} should be null";
-    });
+    void is_null() =>
+        generic_match(this.actual == null, () =>
+            "${"`${this.actual}`".red} should be null");
 
-    isnot_null() => generic_match(this.actual!= null, () {
-        return "${"`${this.actual}`".red} should not be null";
-    });
+    void isnot_null() =>
+        generic_match(this.actual!= null, () =>
+            "${"`${this.actual}`".red} should not be null");
 
     SpecModule assert_that(actual) {
         this.actual = actual;
         return this;
     }
 
-    fail(String message) {
+    void fail(String message) {
         this.it_state = false;
         this.spacing += "    ";
         this.failed_it_result += "${this.spacing}${StackTrace.current.file}:${StackTrace.current.line}:\n";
