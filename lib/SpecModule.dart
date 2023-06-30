@@ -117,7 +117,7 @@ class SpecModule {
             "${"`${this.actual}`".red} should be null");
 
     void isnot_null() =>
-        generic_match(this.actual!= null, () =>
+        generic_match(this.actual != null, () =>
             "${"`${this.actual}`".red} should not be null");
 
     SpecModule assert_that(actual) {
