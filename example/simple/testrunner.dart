@@ -2,11 +2,10 @@ import "package:dspec/dspec.dart";
 
 import "simple.spec.dart";
 
-main() {
-    var s = Spec([
+void main() {
+    Spec([
         cDataLib(),
         second(),
         third(),
-    ]);
-    s.run_spec_suite(type: "all");
+    ]).run_spec_suite(type: "all");
 }

@@ -2,9 +2,8 @@ import "package:dspec/dspec.dart";
 
 import "PrimeFactors.spec.dart";
 
-main() {
-    var s = Spec([
+void main() {
+    Spec([
         PrimeFactorsSpec(),
-    ]);
-    s.run_spec_suite(type: "all");
+    ]).run_spec_suite(type: "all");
 }

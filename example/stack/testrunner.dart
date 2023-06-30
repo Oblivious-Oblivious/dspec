@@ -2,9 +2,8 @@ import "package:dspec/dspec.dart";
 
 import "Stack.spec.dart";
 
-main() {
-    var s = Spec([
+void main() {
+    Spec([
         StackSpec(),
-    ]);
-    s.run_spec_suite(type: "all");
+    ]).run_spec_suite(type: "all");
 }
