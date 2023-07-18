@@ -1,32 +1,32 @@
 import "String+Colors.dart";
 
 class SpecData {
-    int it_counter = 0;
-    int xit_counter = 0;
-    int positive_it_counter = 0;
-    var time_taken = <int>[];
+    int itCounter = 0;
+    int xitCounter = 0;
+    int positiveItCounter = 0;
+    var timeTaken = <int>[];
 
     void display() {
-        print("● ${it_counter + xit_counter} tests".yellow);
-        print("✓ ${positive_it_counter} passing".green);
-        print("✗ ${it_counter - positive_it_counter} failing".red);
-        print("- ${xit_counter} skipped".gray);
+        print("● ${itCounter + xitCounter} tests".yellow);
+        print("✓ ${positiveItCounter} passing".green);
+        print("✗ ${itCounter - positiveItCounter} failing".red);
+        print("- ${xitCounter} skipped".gray);
 
-        double formatted_time = this.time_taken.fold(0, (acc, next) => acc + next);
-        if(formatted_time > 60000000)
-            print("★ Finished in ${(formatted_time/60000000).toStringAsFixed(5)} minutes".cyan);
-        else if(formatted_time > 1000000)
-            print("★ Finished in ${(formatted_time/1000000).toStringAsFixed(5)} seconds".cyan);
-        else if(formatted_time > 1000)
-            print("★ Finished in ${(formatted_time/1000).toStringAsFixed(5)} ms".cyan);
+        double formattedTime = this.timeTaken.fold(0, (acc, next) => acc + next);
+        if(formattedTime > 60000000)
+            print("★ Finished in ${(formattedTime/60000000).toStringAsFixed(5)} minutes".cyan);
+        else if(formattedTime > 1000000)
+            print("★ Finished in ${(formattedTime/1000000).toStringAsFixed(5)} seconds".cyan);
+        else if(formattedTime > 1000)
+            print("★ Finished in ${(formattedTime/1000).toStringAsFixed(5)} ms".cyan);
         else
-            print("★ Finished in ${formatted_time.toStringAsFixed(5)} μs".cyan);
+            print("★ Finished in ${formattedTime.toStringAsFixed(5)} μs".cyan);
     }
 
     void add(SpecData data) {
-        this.it_counter += data.it_counter;
-        this.xit_counter += data.xit_counter;
-        this.positive_it_counter += data.positive_it_counter;
-        this.time_taken = data.time_taken;
+        this.itCounter += data.itCounter;
+        this.xitCounter += data.xitCounter;
+        this.positiveItCounter += data.positiveItCounter;
+        this.timeTaken = data.timeTaken;
     }
 }

@@ -1,11 +1,11 @@
 extension Formatting on StackTrace {
-    List<String> retrieve_file_info() {
+    List<String> retrieveFileInfo() {
         var frames = this.toString();
-        var index_of_filename = frames.indexOf(RegExp("[A-Za-z]+.spec.dart"));
-        var file_info = frames.substring(index_of_filename);
-        return file_info.split(':');
+        var indexOfFilename = frames.indexOf(RegExp("[A-Za-z]+.spec.dart"));
+        var fileInfo = frames.substring(indexOfFilename);
+        return fileInfo.split(':');
     }
 
-    String get file => retrieve_file_info()[0];
-    String get line => retrieve_file_info()[1];
+    String get file => retrieveFileInfo()[0];
+    String get line => retrieveFileInfo()[1];
 }
